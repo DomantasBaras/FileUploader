@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-class CSVParser
+use App\Interfaces\FileParserInterface;
+class CSVParser implements FileParserInterface
 {
     /**
      * Parse the CSV file and return data as an array

@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
-class JSONParser
+use App\Interfaces\FileParserInterface;
+
+class JSONParser implements FileParserInterface
 {
     /**
      * Parse the JSON file and return data as an array

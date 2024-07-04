@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
-class XMLParser
+use App\Interfaces\FileParserInterface;
+
+class XMLParser implements FileParserInterface
 {
     /**
      * Parse the XML file and return data as an array

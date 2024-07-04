@@ -33,6 +33,16 @@ class FileUploadController
             return ['error' => 'No file uploaded or an upload error occurred. Please upload a valid file.'];
         }
 
+        // Check the file size
+        if ($file['size'] > $this->config['max_file_size']) {
+            return [
+                'error' => [
+                    'The file is too large.',
+                    'Please upload a file smaller than 1 MB.'
+                ]
+            ];
+        }
+
         // Get the file extension
         $extension = pathinfo($file['name'], PATHINFO_EXTENSION); 
 
