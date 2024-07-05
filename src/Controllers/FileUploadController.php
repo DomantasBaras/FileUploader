@@ -9,6 +9,7 @@ use App\Models\XMLParser;
 class FileUploadController
 {
     private $config;
+    private $mockParsers = [];
 
     /**
      * Constructor to initialize configuration
@@ -72,6 +73,10 @@ class FileUploadController
      */
     private function getParser($extension)
     {
+        if (isset($this->mockParsers[$extension])) {
+            return $this->mockParsers[$extension];
+        }
+
         switch ($extension) {
             case 'csv':
                 return new CSVParser();
@@ -82,5 +87,9 @@ class FileUploadController
             default:
                 return null;
         }
+    }
+    public function setMockParser($extension, $parser)
+    {
+        $this->mockParsers[$extension] = $parser;
     }
 }
